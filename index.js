@@ -12,6 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/category", category);
 app.use("/api/sub-category", subCategory);
 app.use("/api/item", Item);
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to the Menu Management",
+  });
+});
 
 connectDB()
   .then((res) => {
