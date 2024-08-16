@@ -74,7 +74,9 @@ export const getItemByCategory = async (req, res) => {
         })
       );
 
-      return res.status(200).json(itemsData);
+      const flattenedItems = itemsData.flat();
+
+      return res.status(200).json(flattenedItems);
     }
 
     return res.status(200).json(items);
