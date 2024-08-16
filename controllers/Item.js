@@ -67,7 +67,10 @@ export const getItemByCategory = async (req, res) => {
           .status(404)
           .json({ message: "No items found for this category" });
       }
-      const itemsData = await Item.find({ subCategoryId: subCategory[0]._id });
+
+      const itemsData = subCategory.map(async (item) => {
+        return await Item.find({ subCategoryId: item._id });
+      });
 
       return res.status(200).json(itemsData);
     }
