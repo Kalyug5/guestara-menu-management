@@ -68,9 +68,11 @@ export const getItemByCategory = async (req, res) => {
           .json({ message: "No items found for this category" });
       }
 
-      const itemsData = subCategory.map(async (item) => {
-        return await Item.find({ subCategoryId: item._id });
-      });
+      const itemsData = await Promise.all(
+        subCategory.map(async (item) => {
+          return await Item.find({ subCategoryId: item._id });
+        })
+      );
 
       return res.status(200).json(itemsData);
     }
