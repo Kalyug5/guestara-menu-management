@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Category from "../models/Category.js";
 import SubCategory from "../models/Sub-Category.js";
+import Item from "../models/Item-model.js";
 
 export const createSubCategory = async (req, res) => {
   try {
@@ -78,6 +79,22 @@ export const updateSubCategory = async (req, res) => {
     if (!subCategory)
       return res.status(404).json({ message: "Sub Category not found" });
     res.status(200).json(subCategory);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteOneSubCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const subCategory = await SubCategory.findById(id);
+    if (!subCategory)
+      return res.status(404).json({ message: "Sub Category not found" });
+    await Item.deleteMany({ subCategoryId: id });
+    await SubCategory.findByIdAndDelete(id);
+    return res
+      .status(200)
+      .json({ message: "Sub Category deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
