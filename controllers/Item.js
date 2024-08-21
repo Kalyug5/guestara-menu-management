@@ -125,10 +125,15 @@ export const updateItemById = async (req, res) => {
   try {
     const { id } = req.params;
 
+    const item = await Item.findById(id);
+
     if (req.body.baseAmount || req.body.discount) {
       const baseAmount =
-        req.body.baseAmount !== undefined ? req.body.baseAmount : undefined;
-      const discount = req.body.discount !== undefined ? req.body.discount : 0;
+        req.body.baseAmount !== undefined
+          ? req.body.baseAmount
+          : item.baseAmount;
+      const discount =
+        req.body.discount !== undefined ? req.body.discount : item.discount;
       req.body.totalAmount = baseAmount - discount;
     }
 
