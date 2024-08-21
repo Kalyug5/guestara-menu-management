@@ -34,13 +34,15 @@ Link : https://guestara-menu-management.onrender.com
 2. GET single Category-> url/api/category/:identifier // identifer can be id or name
 3. POST one Category-> url/api/category
 4. PUT specific Category-> url/api/category/:id
+5. DELETE specific Category and all it's childs sub-category and items => url/api/category/:id //id of category
 
 ## Sub Category Route->
-1.GET all Sub Category-> url/api/sub-category
-2.GET all Sub Category within a Category-> url/api/sub-category/subcategories/:id
-3.GET specific Sub Category-> url/api/sub-category/:identifier  // identifer can be id or name
-4.POST one Sub category under specific Category-> url/api/sub-category/create/:categoryId
-5.PUT Sub category -> url/api/sub-category/:id
+1. GET all Sub Category-> url/api/sub-category
+2. GET all Sub Category within a Category-> url/api/sub-category/subcategories/:id
+3. GET specific Sub Category-> url/api/sub-category/:identifier  // identifer can be id or name
+4. POST one Sub category under specific Category-> url/api/sub-category/create/:categoryId
+5. PUT Sub category -> url/api/sub-category/:id
+6. DELETE specific sub-category -> url/api/sub-category/:id //id of specific sub category
 
 ## Item Route->
 1. GET all Items-> url/api/item
@@ -50,6 +52,7 @@ Link : https://guestara-menu-management.onrender.com
 5. GET Search the item by name -> url/api/item/search?name=xyz
 6. POST item-> url/api/item
 7. PUT item-> url/api/item/:id
+8. DELETE item->url/api/item/:id //id of the particular item
 
 
 ### Try All These in https://www.postman.com/
